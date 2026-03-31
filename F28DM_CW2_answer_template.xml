@@ -82,7 +82,7 @@
     <question id="10">
         <answer>1694741</answer>
         <sql>
-          SELECT ma.actorid from imdb.movies2actors as ma join imdb.movies as m on ma.movieid = m.movieid where m.year < 2015 group by ma.actorid having count(*) >43 and exists(select 1 from imdb.movies2actors ma2 join imdb.movies2directors as md on ma2.movieid = md.movieid join imdb.directors as d on md.directorid = d.directorid where ma2.actorid = ma.actoridand d.name = 'Spielberg, Steven'); 
+          SELECT ma.actorid from imdb.movies2actors as ma join imdb.movies as m on ma.movieid = m.movieid where m.year < 2015 group by ma.actorid having count(*) >43 and exists(select 1 from imdb.movies2actors ma2 join imdb.movies2directors as md on ma2.movieid = md.movieid join imdb.directors as d on md.directorid = d.directorid where ma2.actorid = ma.actorid and d.name = 'Spielberg, Steven'); 
         </sql>
     </question>
 

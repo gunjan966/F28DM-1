@@ -118,7 +118,7 @@
             <![CDATA[   
             SELECT ma.actorid from imdb.movies2actors as ma 
             join imdb.movies as m on ma.movieid = m.movieid 
-            where m.year < 2015 group by ma.actorid 
+            where m.year &lt; 2015 group by ma.actorid 
             having count(*) > 43 and exists(select 1 from imdb.movies2actors as ma2 
             join imdb.movies2directors as md on ma2.movieid = md.movieid 
             join imdb.directors as d on md.directorid = d.directorid 

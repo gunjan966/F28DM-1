@@ -17,9 +17,9 @@
 <!--START OF YOUR ANSWERS and SQL STATEMENTS-->
 
     <question id="1">
-        <answer></answer>
+        <answer>Hamlet</answer>
         <sql>
-            <![CDATA[   your SQL ;   ]]>
+            SELECT title FROM imdb.movies ORDER BY year ASC;
         </sql>
     </question>
 

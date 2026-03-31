@@ -1,7 +1,7 @@
 <data>
 
 <!--UPDATE WITH YOUR USERNAME -->
-    <USERNAME>abc123</USERNAME>
+    <USERNAME>gr3004</USERNAME>
 
 <!--START OF EXAMPLE   -->
     <question id="0">
@@ -24,171 +24,171 @@
     </question>
 
     <question id="2">
-        <answer></answer>
+        <answer>2</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+            SELECT COUNT(*) FROM (SELECT movieid FROM imdb.movies2directors GROUP BY movieid HAVING COUNT(directorid) > 7); 
         </sql>
     </question>
 
     <question id="3">
-        <answer></answer>
+        <answer>1940</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          SELECT movies.year FROM imdb.movies INNER JOIN imdb.movies2directors ON movies.movieid = movies2directors.movieid GROUP BY movies.movieid, movies.year ORDER BY COUNT (movies2directors.directorid) DESC LIMIT 1; 
         </sql>
     </question>
 
     <question id="4">
-        <answer></answer>
+        <answer>2500324</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          SELECT m2.actorid FROM imdb.movies2actors AS m1 JOIN imdb.movies2actors AS m2 ON m1.movieid = m2.movieid JOIN imdb.actors ON m1.actorid = actors.actorid WHERE actors.name = 'Hanks, Tom' AND m2.actorid != m1.actorid GROUP BY m2.actorid ORDER BY COUNT(*) DESC LIMIT 1;  
         </sql>
     </question>
 
     <question id="5">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="6">
-        <answer></answer>
+        <answer>1930</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          SELECT (movies.year / 10) * 10 as decade, AVG(cast(ratings.rank as float)) as average FROM imdb.movies join imdb.ratings on movies.movieid = ratings.movieid group by decade ORDER BY average DESC  limit 1; 
         </sql>
     </question>
 
     <question id="7">
-        <answer></answer>
+        <answer>9</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select m.movieid from imdb.movies2directors as md join imdb.movies as m on md.movieid = m.movieid where md.genre IS NULL; 
         </sql>
     </question>
 
     <question id="8">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="9">
-        <answer></answer>
+        <answer>154945</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select md.directorid from imdb.movies2directors as md join imdb.runningtimes as r on md.movieid = r.movieid where r.time1 > 160 group by md.directorid order by count(*) desc limit 1; 
         </sql>
     </question>
 
     <question id="10">
-        <answer></answer>
+        <answer>1694741</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          SELECT ma.actorid from imdb.movies2actors as ma join imdb.movies as m  on ma.movieid = m.movieid where m.year < 2015 group by ma.actorid having count (*) >43 and exists ( select 1 from imdb.movies2actors ma2 join imdb.movies2directors as md on ma2.movieid = md.movieid join imdb.directors as d on md.directorid = d.directorid where ma2.actorid = ma.actoridand d.name = 'Spielberg, Steven'). 
         </sql>
     </question>
 
     <question id="11">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="12">
-        <answer></answer>
+        <answer>616</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select h.cell_id, avg(l.average) as avge from scenicornot.hexgrid10km as h join scenicornot.locations as l on ST_Contains(h.geom, l.geom_bng) group by h.cell_id having count(*) >= 3 order by avge desc limit 1 
         </sql>
     </question>
 
     <question id="13">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="14">
-        <answer></answer>
+        <answer>1618, 1688</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          with avge1 as (select h.cell_id, avg(l.average) as avge, h.geom from scenicornot.hexgrid10km as h join scenicornot.locations as l on st_contains(h.geom, l.geom_bng) group by h.cell_id, h.geom) select a1.cell_id, a2.cell_id from avge1 as a1 join avge1 as a2 on st_touches(a1.geom, a2.geom) and a1.cell_id < a2.cell_id order by ABS(a1.avge - a2.avge) desc limit 1 
         </sql>
     </question>
 
     <question id="15">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="16">
-        <answer></answer>
+        <answer>12</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select count(l.fid) from scenicornot.locations as l join quakes.scotquakes as sq on ST_DWithin(l.geom_bng, sq.geom, 100) 
         </sql>
     </question>
 
     <question id="17">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="18">
-        <answer></answer>
+        <answer>1.1830428059330729</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select avg(spd) from trajectory.tracking where userid = 'p3' and spd > 0 
         </sql>
     </question>
 
     <question id="19">
-        <answer></answer>
+        <answer>p1</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select userid from trajectory.tracking group by userid order by count(*) desc limit 1 
         </sql>
     </question>
 
     <question id="20">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
     <question id="21">
-        <answer></answer>
+        <answer>0.013098790136468603</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select sum(st_distance(geom2, geom)) as distance from (select geom, lag(geom) over(order by datetime) as geom2 from trajectory.tracking where userid ='p3') 
         </sql>
     </question>
 
     <question id="22">
-        <answer></answer>
+        <answer>8</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select extract(month from date_taken) as month from flickr.flickr_edin group by month order by count(*) desc limit 1 
         </sql>
     </question>
 
 
     <question id="23">
-        <answer></answer>
+        <answer>67008765@N00</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select f.userid from flickr.flickr_edin as f join flickr.edin_grid100m as eg on st_contains(eg.geom, f.geom) group by f.userid order by count(eg.id) desc limit 1 
         </sql>
     </question>
 
     <question id="24">
-        <answer></answer>
+        <answer>187</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          select count(*) from( select osm_name from accident.network where osm_name ILIKE '%avenue%' group by osm_name having count(osm_id)>1) 
         </sql>
     </question>
 
     <question id="25">
-        <answer></answer>
+        <answer>null</answer>
         <sql>
-          <![CDATA[   your SQL ;   ]]>
+          I'm not sure
         </sql>
     </question>
 
